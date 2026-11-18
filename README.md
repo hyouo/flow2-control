@@ -1,6 +1,8 @@
 # FLOW2 Control
 
-洛斐 FLOW 2 84 标准 ANSI 版（OE927）的中英双语网页配置器。通过 USB 读取、编辑和验证 VIA 12 键位、宏与白色背光。键盘保存一套配置，浏览器保存命名方案和编辑草稿。[打开网页配置器](https://hyouo.github.io/flow2-control/) · [English](README.en.md)
+我给洛斐 FLOW 2 重写驱动，纯粹是因为官方驱动太烂了。
+
+FLOW2 Control 适配 FLOW 2 84 标准 ANSI 版（OE927），有中文和英文界面。用 USB 数据线连上键盘，就能在浏览器里改键、录宏、调白色背光。点「保存到键盘」后，配置器会通过 VIA 12 读回刚写入的设置，逐项核对。键盘保存一套配置，其他方案和编辑草稿留在浏览器里。[打开网页配置器](https://hyouo.github.io/flow2-control/) · [English](README.en.md)
 
 ## 使用
 

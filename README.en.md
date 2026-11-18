@@ -1,6 +1,8 @@
 # FLOW2 Control
 
-A bilingual USB configurator for the standard ANSI Lofree FLOW 2 84 (OE927). It reads VIA 12 keymaps, macros and white backlight settings, then verifies changes on the keyboard. [Open the configurator](https://hyouo.github.io/flow2-control/) · [中文](README.md)
+I rewrote the driver for my Lofree FLOW 2 simply because the official one sucks.
+
+FLOW2 Control supports the standard ANSI FLOW 2 84 (OE927) and has English and Chinese interfaces. Plug the keyboard in over USB to remap keys, record macros and adjust the white backlight in your browser. When you select **Save to keyboard**, the configurator reads the settings back over VIA 12 to verify each change. The keyboard stores one configuration. Your browser keeps your other profiles and drafts. [Open the configurator](https://hyouo.github.io/flow2-control/) · [中文](README.md)
 
 ## Configure a key
 
