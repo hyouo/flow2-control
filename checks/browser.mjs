@@ -130,6 +130,8 @@ try {
   };
   await ui.goto(base); await el('#connect').click();
   await el('#connection-dot.online').waitFor();
+  assert.equal(await el('#system-layer').inputValue(), process.platform === 'darwin' ? 'mac' : 'windows');
+  await el('#system-layer').selectOption('windows');
   for (const [width,height] of [[1366,768],[820,856],[390,844]]) {
     await ui.setViewportSize({width,height});
     await el('#keyboard [data-position="0,13"]').click();
