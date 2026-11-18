@@ -1,0 +1,19 @@
+{
+  "name": "flow2-control",
+  "version": "0.6.4",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node server.mjs",
+    "test": "node --test",
+    "test:hardware": "node checks/hardware.mjs",
+    "test:browser": "npm run build && node checks/browser.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.65.1"
+  }
+}

@@ -1,0 +1,6 @@
+.local/
+node_modules/
+backups/
+dist/
+/PLAN.md
+/REVIEW.md

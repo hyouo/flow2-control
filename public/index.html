@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f5f5">
+  <title>FLOW2 Control · 键盘配置</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M5 9h1m3 0h1m3 0h1m3 0h2M5 12h1m3 0h1m3 0h1m3 0h2M7 15h10"/></symbol>
+    <symbol id="icon-backup" viewBox="0 0 24 24"><path d="M4 8h16v12H4zM3 4h18v4H3zM9 12h6"/></symbol>
+    <symbol id="icon-device" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+    <symbol id="icon-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6 6a8 8 0 0 1 13 3M18 18A8 8 0 0 1 5 15"/></symbol>
+    <symbol id="icon-save" viewBox="0 0 24 24"><path d="M5 3h12l3 3v15H4V3h1zm3 0v6h8V3M8 21v-8h8v8"/></symbol>
+    <symbol id="icon-light" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10l2 2M5 19l2-2M17 7l2-2"/></symbol>
+    <symbol id="icon-macro" viewBox="0 0 24 24"><path d="M5 5h14v14H5zM9 8l6 4-6 4z"/></symbol>
+    <symbol id="icon-touch" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="4"/><path d="M10 9h4m-4 3h4m-4 3h4"/></symbol>
+    <symbol id="icon-test" viewBox="0 0 24 24"><path d="M2 13h4l3-7 5 13 3-7h5"/></symbol>
+    <symbol id="icon-sound" viewBox="0 0 24 24"><path d="M12 5 6 9H3v6h3l6 4zM16 8a6 6 0 0 1 0 8"/></symbol>
+    <symbol id="icon-mute" viewBox="0 0 24 24"><path d="M12 5 6 9H3v6h3l6 4zM16 9l6 6m0-6-6 6"/></symbol>
+    <symbol id="icon-glow" viewBox="0 0 24 24"><path d="M3 18h18M7 15a5 5 0 0 1 10 0M12 4v3M4 7l2 2m14-2-2 2"/></symbol>
+    <symbol id="icon-displays" viewBox="0 0 24 24"><rect x="2" y="5" width="13" height="10" rx="2"/><rect x="9" y="10" width="13" height="10" rx="2"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></symbol>
+    <symbol id="icon-filter" viewBox="0 0 24 24"><path d="M3 7h8m4 0h6M3 17h3m4 0h11"/><circle cx="13" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol>
+    <symbol id="icon-prev" viewBox="0 0 24 24"><path d="M5 5v14m13-14L7 12l11 7z"/></symbol>
+    <symbol id="icon-next" viewBox="0 0 24 24"><path d="M19 5v14M6 5l11 7-11 7z"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path d="m3 5 10 7-10 7zM17 5v14m4-14v14"/></symbol>
+    <symbol id="icon-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 11a7 7 0 0 0 14 0m-7 7v4m-4 0h8"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
+  </svg>
+
+  <aside class="rail" aria-label="主导航">
+    <button id="workbench" class="monogram" aria-label="键盘工作台" title="键盘工作台" aria-pressed="true"><i class="brand-mark" aria-hidden="true"></i><span class="wordmark">工作台</span></button>
+    <nav>
+      <button class="nav-button" data-view="backup"><svg><use href="#icon-backup"/></svg><span>方案</span></button>
+      <button class="nav-button" data-view="test"><svg><use href="#icon-test"/></svg><span>测试</span></button>
+      <button class="nav-button" data-view="device"><svg><use href="#icon-device"/></svg><span>设备</span></button>
+    </nav>
+    <div class="rail-foot"><select id="language" aria-label="界面语言"><option value="zh-CN">简体中文</option><option value="en">English</option></select><span id="app-version"></span></div>
+  </aside>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="topbar">
+        <div class="product-id"><h1>FLOW <strong>2</strong> <span>84</span></h1><span class="model-id">OE927 · ANSI</span></div>
+        <div class="device-tools">
+          <label class="profile-picker"><svg aria-hidden="true"><use href="#icon-backup"/></svg><select id="profile-select" aria-label="切换本地方案"></select></label>
+          <div class="connection"><span id="connection-dot" class="dot"></span><span id="connection-label">USB 未连接</span><button id="connect" class="button primary">通过 USB 配置</button></div>
+        </div>
+      </div>
+      <div class="view-bar">
+        <nav id="module-tabs" class="module-tabs" aria-label="键盘设置">
+          <button data-view="keymap" aria-pressed="true"><svg><use href="#icon-keyboard"/></svg><span>键位分配</span></button>
+          <button data-view="macros"><svg><use href="#icon-macro"/></svg><span>宏</span></button>
+          <button data-view="lighting"><svg><use href="#icon-light"/></svg><span>背光</span></button>
+          <button data-view="touch"><svg><use href="#icon-touch"/></svg><span>触控条</span></button>
+        </nav>
+        <h2 id="backup-title" data-view-title="backup" hidden>方案与备份</h2>
+        <h2 id="test-title" data-view-title="test" hidden>按键测试</h2>
+        <h2 id="device-title" data-view-title="device" hidden>设备信息</h2>
+      </div>
+    </header>
+    <div class="view-frame">
+    <main id="view-scroll">
+      <div class="view-content">
+      <div id="notice" class="notice" hidden role="status" aria-live="polite"><span class="notice-mark">●</span><span id="notice-text">使用数据线连接键盘，再点击右上角「连接键盘」。</span></div>
+      <div id="recovery-banner" class="recovery-banner" hidden><span id="recovery-time">发现未保存草稿</span><button id="restore-draft" class="button secondary">恢复草稿</button><button id="export-recovery" class="button quiet">导出草稿</button><button id="ignore-draft" class="text-button">丢弃</button></div>
+
+      <section id="device-stage" class="device-stage" aria-label="键盘预览">
+        <div class="stage-toolbar">
+          <span id="stage-label">实体布局</span>
+          <div id="layer-controls" class="layer-row" hidden>
+            <select id="system-layer" aria-label="编辑系统层"><option value="windows">Windows</option><option value="mac">macOS</option><option id="service-choice" value="service" disabled hidden>原厂服务层</option></select><div id="layers" class="layer-tabs" role="group" aria-label="选择配置层"></div>
+            <details id="advanced-layers" class="layer-more"><summary id="more-layer-label" aria-label="更多层设置" title="更多层设置">···</summary>
+              <div class="layer-menu"><label for="advanced-layer">原厂服务层</label><select id="advanced-layer"><option value="">选择服务层</option><option value="4">服务层 4</option><option value="5">服务层 5</option></select>
+              <span id="mode-tip"><span>实体切换</span> <kbd>Fn+N</kbd> Windows <i>·</i> <kbd>Fn+M</kbd> Mac</span></div>
+            </details>
+          </div>
+          <div id="history-actions" class="history-actions" hidden>
+            <button id="undo" class="icon-button" title="撤销编辑" aria-label="撤销编辑" disabled><svg viewBox="0 0 24 24"><path d="m8 5-5 5 5 5M4 10h9a6 6 0 0 1 6 6v2"/></svg></button>
+            <button id="redo" class="icon-button" title="重做编辑" aria-label="重做编辑" disabled><svg viewBox="0 0 24 24"><path d="m16 5 5 5-5 5m4-5h-9a6 6 0 0 0-6 6v2"/></svg></button>
+            <button id="refresh" class="icon-button" title="重新读取" aria-label="重新读取" disabled><svg><use href="#icon-refresh"/></svg></button>
+          </div>
+        </div>
+        <div id="key-surface" class="keyboard-surface">
+          <div id="layout-preview" class="keyboard-assembly">
+            <div class="keyboard-body"><div id="keyboard" class="keyboard" role="group" aria-label="FLOW 2 84 键布局"></div><span class="case-engraving" aria-hidden="true">Lofree</span></div>
+            <button type="button" class="strip-hit" id="case-touch" aria-label="查看右侧触控条" title="右侧触控条"><i></i></button>
+          </div>
+          <div id="light-preview" class="keyboard-assembly light-preview" hidden><div class="keyboard-body"><div id="light-keyboard" class="keyboard" aria-hidden="true"></div><span class="case-engraving" aria-hidden="true">Lofree</span></div></div>
+        </div>
+        <div class="stage-status"><span id="inherit-legend" hidden><i></i>沿用基础层</span><span id="dirty-legend" hidden><i></i>待写入</span><span id="assignment-prompt" hidden></span><button id="cancel-assignment" class="text-button" hidden>取消宏分配</button></div>
+      </section>
+      <section id="view-keymap" class="view" aria-label="键位配置">
+          <aside class="inspector" id="inspector" aria-label="按键设置">
+            <button id="close-inspector" class="sheet-close" aria-label="关闭编辑面板">×</button>
+            <div id="key-inspector">
+              <div id="offline-guide" class="offline-guide"><div><h3 id="guide-title">连接键盘以读取映射</h3><p id="guide-description">将键盘切到有线档，用数据线连接电脑，再选择「通过 USB 配置」。</p></div><div class="guide-links"><button id="guide-test" class="button secondary">测试按键</button><a class="manual-link" href="https://cdn.shopify.com/s/files/1/2779/9046/files/Flow2_84_UserManual.pdf?v=1792140117" target="_blank" rel="noreferrer">操作手册 ↗</a></div></div>
+              <div id="key-editor" hidden>
+                <div class="catalog-controls">
+                  <div class="editor-tabs" role="group" aria-label="动作类型"><button data-kind="key" aria-pressed="true">按键</button><button data-kind="chord">组合键</button><button data-kind="macro">宏</button></div>
+                  <div class="search-field">
+                    <svg aria-hidden="true"><use href="#icon-search"/></svg><input id="search" type="search" placeholder="搜索按键或动作" aria-label="搜索按键或动作">
+                    <label id="catalog-filter" class="catalog-filter">
+                      <svg aria-hidden="true"><use href="#icon-filter"/></svg>
+                      <select id="category" aria-label="键位分类"><option value="常用">常用动作</option><option value="全部">全部</option><option>字母数字</option><option>编辑导航</option><option>符号</option><option>功能键</option><option>修饰键</option><option>媒体灯光</option><option>快捷键</option><option>层切换</option><option>特殊</option></select>
+                    </label>
+                  </div>
+                </div>
+                <div id="action-choices" class="action-picker">
+                  <fieldset id="modifier-fieldset" class="modifier-fieldset" disabled>
+                    <legend>组合键 · 勾选后选择基本按键</legend>
+                    <div class="chord-controls">
+                      <div class="modifier-options"><label><input type="checkbox" name="modifier" value="1">Ctrl</label><label><input type="checkbox" name="modifier" value="2">Shift</label><label><input type="checkbox" name="modifier" value="4"><span id="alt-label">Alt</span></label><label><input type="checkbox" name="modifier" value="8"><span id="meta-label">Win</span></label></div>
+                      <div class="modifier-tools"><select id="modifier-side" aria-label="修饰键侧"><option value="left">左侧修饰键</option><option value="right">右侧修饰键</option></select><button id="capture-shortcut" class="button secondary" type="button" disabled>直接按组合键</button></div>
+                    </div>
+                  </fieldset>
+                  <div id="catalog" class="catalog" aria-label="可分配的键位"></div>
+                </div>
+                <div class="assignment-summary">
+                  <div class="inspector-heading">
+                    <div><span class="field-label">实体键</span><h3 id="selected-position">按键设置</h3></div>
+                    <div class="sample-well" aria-hidden="true"><div class="key-model" id="cap-model"><strong id="selected-key">—</strong></div></div>
+                  </div>
+                  <div class="mapping-pair"><div><span id="base-label">键盘当前</span><strong id="original-mapping">—</strong></div><div id="pending-mapping" hidden><span>待写入</span><strong id="draft-mapping">—</strong></div></div>
+                  <div class="inspector-actions"><button id="undo-key" class="text-button" disabled>撤销此键修改</button><button id="restore-key" class="text-button" disabled>恢复初始映射</button></div>
+                  <details class="advanced"><summary>自定义键码</summary><form id="raw-form"><input id="raw-code" placeholder="0x0029" aria-label="十六进制键码" disabled><button id="raw-apply" class="button secondary" type="submit" disabled>应用</button></form></details>
+                  <button id="open-bound-macro" class="button secondary" hidden>打开绑定的宏</button>
+                </div>
+              </div>
+            </div>
+            <div id="touch-inspector" hidden>
+              <div id="touch-detail" class="touch-detail" data-gesture-view="volume">
+                <div class="touch-profile" role="img" aria-label="FLOW 2 84 右侧视图，黑色触控条后方是 USB-C 接口">
+                  <div class="side-caps"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="side-case"><i class="side-sensor"></i><i class="side-port"></i></div>
+                </div>
+                <div class="gesture-motion" aria-hidden="true"><span class="gesture-fn">Fn + </span>⟷</div>
+                <div class="gesture-hold" aria-hidden="true"><kbd>Fn</kbd> + <kbd>Space</kbd> <b>3 s</b></div>
+              </div>
+              <div class="gesture-list">
+                <button data-gesture="volume" aria-pressed="true"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 5-6 4H3v6h3l6 4zM16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg><strong>系统音量</strong><span>上滑调高，下滑调低</span></button>
+                <button data-gesture="screen"><svg aria-hidden="true"><use href="#icon-light"/></svg><strong>屏幕亮度</strong><span>按住 Fn 并滑动</span></button>
+                <button data-gesture="toggle"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="6"/><circle cx="15" cy="12" r="3"/></svg><strong>启用或关闭</strong><span>长按 Fn＋空格 3 秒</span></button>
+              </div>
+            </div>
+          </aside>
+      </section>
+
+      <section id="view-lighting" class="view" aria-label="灯光设置" hidden>
+          <fieldset id="lighting-controls" class="settings-panel" disabled>
+            <div><div class="setting-title"><span>背光亮度</span></div>
+            <div id="brightness" class="levels" role="group" aria-label="背光亮度"><button data-level="0">熄灯</button><button data-level="1">25%</button><button data-level="2">50%</button><button data-level="3">75%</button><button data-level="4">100%</button></div></div>
+
+            <label class="effect-control" for="light-effect"><span>灯光效果</span><select id="light-effect"><option value="" disabled>—</option><option value="0">常亮</option><option value="1">呼吸</option></select></label>
+            <div><p id="light-status" class="utility-note">连接后读取当前设置。</p><button id="undo-light" class="text-button" type="button">撤销灯光修改</button></div>
+          </fieldset>
+      </section>
+
+      <section id="view-macros" class="view" aria-label="宏编辑" hidden>
+        <div class="macro-workspace">
+          <aside class="macro-library"><h3>宏槽</h3><div id="macro-slots" class="macro-slots" aria-label="选择宏"></div></aside>
+          <div class="macro-editor">
+            <div class="section-heading"><h3 id="macro-title">连接后读取宏</h3><span id="macro-memory" class="muted"></span></div>
+            <progress id="macro-meter" aria-label="宏存储使用量" max="2975" value="16"></progress>
+            <div class="macro-meta"><label>名称<input id="macro-name" maxlength="48" placeholder="给这个宏起个名字" disabled></label><label>复制到<select id="macro-copy-target" disabled></select></label><button id="copy-macro" class="button quiet" disabled>复制</button></div>
+            <div class="bindings-row"><span>已分配</span><div id="macro-bindings" class="macro-bindings"></div><button id="assign-macro" class="text-button" disabled>分配按键 →</button></div>
+            <div class="sequence-workspace"><div class="sequence-list"><p id="macro-status" class="utility-note">正在等待键盘。</p>
+            <ol id="macro-timeline" class="macro-timeline" aria-label="宏动作"></ol>
+            </div>
+            <fieldset id="macro-controls" class="macro-controls" disabled>
+              <div class="insertion-row"><span id="insert-position">添加到末尾</span><button id="insert-end" class="text-button" type="button">切换到末尾</button></div>
+              <div class="macro-add-row"><label for="macro-text">文本</label><input id="macro-text" type="text" placeholder="英文、数字或英文标点" autocomplete="off"><button id="add-text" class="button secondary" type="button">添加文本</button></div>
+              <div class="macro-add-row"><label for="macro-key">按键</label><select id="macro-key" aria-label="宏按键"></select><button id="add-key" class="button secondary" type="button">添加按键</button></div>
+              <div class="macro-modifiers"><span>组合键</span><label><input type="checkbox" name="macro-modifier" value="1"> Ctrl</label><label><input type="checkbox" name="macro-modifier" value="2"> Shift</label><label><input type="checkbox" name="macro-modifier" value="4"> <span>Alt</span></label><label><input type="checkbox" name="macro-modifier" value="8"> <span>Win</span></label></div>
+              <div class="macro-add-row"><label for="macro-delay">延迟</label><input id="macro-delay" type="number" min="1" max="9999" step="1" value="100" aria-label="延迟毫秒"><button id="add-delay" class="button secondary" type="button">添加延迟</button></div>
+              <div class="record-settings"><label for="record-delay-mode">录制间隔</label><select id="record-delay-mode"><option value="record">记录实际间隔</option><option value="fixed">固定间隔</option><option value="none">不记录间隔</option></select><input id="fixed-delay" type="number" min="1" max="9999" value="100" aria-label="固定间隔毫秒" hidden><span id="fixed-delay-unit" hidden>ms</span></div>
+              <div class="macro-actions"><button id="record-macro" class="button secondary" type="button">录制并追加</button><button id="clear-macro" class="text-button" type="button">清空此宏</button><button id="undo-macro" class="text-button" type="button">撤销此宏修改</button></div>
+            </fieldset></div>
+            <div id="record-area" class="record-area" tabindex="0" role="group" aria-label="宏录制区域" hidden><strong>正在录制</strong><p>在此区域按键，按 Esc 或点击「结束录制」完成。切换窗口会自动结束。</p><span id="record-count">0 个动作</span><button id="stop-record" class="button secondary">结束录制</button></div>
+            <p class="utility-note">录制仅在此页面内进行。系统和浏览器占用的快捷键可用上方组合键添加；文本宏按英文键盘布局发送。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-backup" class="view" aria-labelledby="backup-title" hidden>
+        <div class="view-heading section-heading"><p>查看、导出或载入本地方案。</p><button id="profile-new" class="button primary" disabled>将当前草稿存为方案</button></div>
+        <div id="profiles-empty" class="profiles-empty"><h3>还没有本地方案</h3><p>保存键位、宏名称、宏动作和灯光。切换方案时会先显示差异，再由你保存到键盘。</p><button id="sample-profile" class="button secondary">查看导航键示例</button></div>
+        <div id="profile-list" class="profile-list"></div>
+        <h3 class="backup-heading">文件与恢复</h3>
+        <div class="backup-row"><div><h3>导出完整配置</h3><p>包含全部键位、宏内容及当前背光设置。</p></div><button id="export" class="button secondary" disabled>导出备份</button></div>
+        <div class="backup-row"><div><h3>导入方案</h3><p>导入后生成待保存的修改，确认保存后生效。</p></div><button id="import" class="button secondary" disabled>选择文件</button><input id="import-file" type="file" accept=".json,application/json" hidden></div>
+        <div class="backup-row"><div><h3>导出当前草稿</h3><p>包含正在编辑的键位、宏、名称和灯光，可用于换机或分享。</p></div><button id="export-draft" class="button secondary" disabled>导出方案</button></div>
+        <div class="backup-row"><div><h3>恢复上次写入前的配置</h3><p>每次保存前，自动保留一份键位、宏和背光快照。</p></div><button id="restore-previous" class="button secondary" disabled>载入快照</button></div>
+        <div class="backup-row"><div><h3>恢复初始配置</h3><p>恢复此浏览器首次使用方案功能时读取的配置，载入后可撤销。</p></div><button id="restore-original" class="button secondary" disabled>载入初始配置</button></div>
+        <p class="utility-note">本地方案、宏名称与自动草稿保存在此浏览器中，清除网站数据会移除这些记录。需要长期保留的配置请导出文件。键盘本身保存一套配置；名称只保存在本机和方案文件中。</p>
+      </section>
+
+      <section id="view-test" class="view" aria-labelledby="test-title" hidden>
+        <div class="view-heading section-heading"><p>查看页面收到的按下、松开和短按次数。</p><div class="test-actions"><button id="test-clear" class="button quiet">清空记录</button><button id="test-toggle" class="button primary">开始测试</button></div></div>
+        <div class="test-session-controls"><label>本轮测试<select id="test-mode"><option>USB</option><option>USB · 断电重启后</option><option>蓝牙</option><option>2.4G</option><option>触控条</option></select></label><button id="test-save-run" class="button secondary">保存本轮记录</button><button id="test-export" class="button quiet">导出测试记录</button></div>
+        <div class="test-stats"><div><strong id="test-total">0</strong><span>有效按下次数</span></div><div><strong id="test-unique">0</strong><span>不同按键</span></div><div><strong id="test-held">0</strong><span>当前按住</span></div><div><strong id="test-peak">0</strong><span>最多同时按下</span></div></div>
+        <div id="test-area" class="test-area" tabindex="0" role="group" aria-label="按键测试区域">
+          <div class="test-monitor"><h3 id="test-status">等待开始</h3><p id="test-prompt" class="test-prompt" hidden></p><strong id="last-key" aria-label="最近收到的按键">—</strong><p id="test-help">选择「开始测试」，再按实体键盘。</p></div>
+          <div class="test-output"><output id="test-sequence" aria-label="收到的按键顺序">尚未收到按键</output><p id="test-run-status" class="utility-note"></p><details><summary>事件明细</summary><pre id="test-events"></pre></details></div><div id="test-keys" class="test-keys"></div>
+        </div>
+        <details class="utility-details"><summary>测试范围</summary><p class="utility-note">这里只记录测试区域收到的事件，离开区域即结束。改键后显示系统收到的映射；Fn 和系统占用的快捷键可能不会上报。此页不测量硬件延迟或消抖时间。</p>
+        <p class="utility-note">测试模式由你选择，表示本轮实体连接方式。USB 配置连接断开后仍可接收蓝牙或 2.4G 的按键。每轮最多保留 500 个事件，本机保留最近 20 轮记录。</p></details>
+      </section>
+
+
+
+      <section id="view-device" class="view" aria-labelledby="device-title" hidden>
+        <div class="device-info-row"><span>型号</span><strong id="device-id">FLOW 2 84 / OE927</strong></div>
+        <div class="device-info-row"><span>配置接口</span><strong id="protocol-info">连接后读取</strong></div>
+        <div class="device-info-row"><span>USB 修订号</span><strong>0012 <small>（OE927 有线实测）</small></strong></div><div class="device-info-row"><span>连接</span><strong id="device-summary">USB 未连接</strong></div>
+        <div class="device-info-row"><span>宏存储</span><strong id="capability-info">连接后读取</strong></div>
+        <div class="device-info-row"><span>背光接口</span><strong id="lighting-info">连接后读取</strong></div>
+        <div class="device-help"><h3>连接帮助</h3>
+          <div class="connection-guides">
+            <div><div class="connection-figure cable" aria-hidden="true"><i></i></div><b>USB-C</b><p>有线档支持读取和写入配置。</p></div>
+            <div><div class="connection-figure" aria-hidden="true"><kbd>Fn</kbd><span>+</span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></div><b>Bluetooth</b><p>无线档短按 Fn＋1 / 2 / 3 切换，长按 3 秒配对。</p></div>
+            <div><div class="connection-figure" aria-hidden="true"><i class="receiver"></i><kbd>Fn</kbd><span>+</span><kbd>4</kbd></div><b>2.4G</b><p>插入接收器，在无线档按 Fn＋4 约 1 秒。</p></div>
+          </div><a href="https://cdn.shopify.com/s/files/1/2779/9046/files/Flow2_84_UserManual.pdf?v=1792140117" target="_blank" rel="noreferrer">操作手册 ↗</a></div>
+        <div class="backup-row"><div><h3>触控扩展</h3><p id="touch-support">通过 USB 查询当前固件。</p></div><button id="touch-probe" class="button secondary" disabled>检测触控接口</button></div>
+        <details class="utility-details"><summary>可调整的参数</summary>
+        <table class="capability-table"><thead><tr><th>功能</th><th>范围</th><th>使用方式</th></tr></thead><tbody>
+          <tr><td>键位与组合键</td><td>6 层，84 个实体键</td><td>键位页 · 逐项读回</td></tr>
+          <tr><td>宏</td><td id="macro-capability">连接后读取容量</td><td>宏页 · 文本、按键、组合键、延迟</td></tr>
+          <tr><td>白色背光</td><td>关闭 / 25 / 50 / 75 / 100%；常亮 / 呼吸</td><td>灯光页 · 读取实际状态</td></tr>
+          <tr><td>顶排 F1–F12</td><td>Windows 和 macOS 基础层、Fn 层</td><td>键位页 · 按层设置</td></tr>
+          <tr><td>触控条音量与亮度</td><td>原厂手势与开关</td><td>键盘本身操作</td></tr>
+          <tr><td>休眠时间、指示灯</td><td>原厂标准接口未开放</td><td>扩展固件提供额外参数</td></tr>
+          <tr><td>触控条分区与手势改键</td><td>原厂标准接口未开放</td><td>扩展固件提供额外参数</td></tr>
+          <tr><td>触发行程、Rapid Trigger</td><td>机械轴不提供可调触发行程</td><td>不适用</td></tr>
+          <tr><td>回报率、消抖时间</td><td>当前接口没有配置命令</td><td>由固件决定</td></tr>
+        </tbody></table></details>
+
+        <div class="section-heading log-title"><h3>连接记录</h3><button id="export-diagnostics" class="button quiet">导出诊断记录</button></div><ol id="event-log" class="event-log"></ol>
+      </section>
+      </div>
+    </main>
+    </div>
+    <footer id="savebar" class="savebar" hidden>
+      <div class="save-state"><strong id="save-title"></strong><span id="save-subtitle"></span></div>
+      <div class="save-actions"><button id="test-saved-key" class="button secondary" hidden>测试此键</button><button id="review" class="button quiet" disabled>查看修改</button><button id="save" class="button primary" disabled>保存到键盘</button></div>
+    </footer>
+  </div>
+  <dialog id="review-dialog"><div class="section-heading"><h2>待保存的修改</h2><button id="close-review" class="button quiet" aria-label="关闭修改预览">关闭</button></div><div id="review-list"><section id="changes-area" hidden><div class="section-heading"><h3>键位</h3><button id="discard" class="text-button">撤销键位修改</button></div><div id="changes"></div></section><div id="other-changes"></div></div><p id="review-note" class="utility-note"></p><div class="dialog-actions"><button id="discard-all" class="button quiet" disabled>撤销全部</button><button id="review-save" class="button primary">保存到键盘</button></div></dialog>
+  <dialog id="name-dialog"><form id="name-form"><h2 id="name-title">保存方案</h2><label class="dialog-field" for="name-input">名称<input id="name-input" maxlength="48" required autocomplete="off"></label><div class="dialog-actions"><button id="name-cancel" class="button quiet" type="button">取消</button><button class="button primary" type="submit">确定</button></div></form></dialog>
+  <dialog id="action-dialog"><h2 id="action-title"></h2><p id="action-description"></p><div id="action-diff" class="diff-list"></div><div class="dialog-actions"><button id="action-cancel" class="button quiet">取消</button><button id="action-confirm" class="button primary">载入草稿</button></div></dialog>
+  <dialog id="shortcut-dialog"><div class="section-heading"><h2>直接录入按键或组合键</h2><button id="shortcut-close" class="button quiet">关闭</button></div><div id="shortcut-area" class="shortcut-area" tabindex="0" role="group" aria-label="组合键录入区域"><strong id="shortcut-value">按下需要的组合键</strong></div><p class="utility-note">按 Esc 取消。系统占用的快捷键可手动组合。</p><button id="shortcut-apply" class="button primary" disabled>应用到当前按键</button></dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
