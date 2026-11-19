@@ -2,59 +2,84 @@
 
 我给洛斐 FLOW 2 重写驱动，纯粹是因为官方驱动太烂了。
 
-FLOW2 Control 适配 FLOW 2 84 标准 ANSI 版（OE927），有中文和英文界面。用 USB 数据线连上键盘，就能在浏览器里改键、录宏、调白色背光。点「保存到键盘」后，配置器会通过 VIA 12 读回刚写入的设置，逐项核对。键盘保存一套配置，其他方案和编辑草稿留在浏览器里。[打开网页配置器](https://hyouo.github.io/flow2-control/) · [English](README.en.md)
+FLOW2 Control 是 **洛斐 FLOW 2 84 标准 ANSI 版（OE927）** 的开源网页配置器。用 USB 数据线连接键盘，就能在桌面 Chrome 或 Edge 里改键、录宏、调白色背光。保存时会从键盘读回设置并核对。拔掉线，改好的键位和宏在蓝牙和 2.4G 下也能用。
+
+**[打开网页配置器](https://hyouo.github.io/flow2-control/)** · [English](README.en.md) · [版本发布](https://github.com/hyouo/flow2-control/releases)
 
 ## 使用
 
-Windows 本地版可双击 **启动 FLOW2.vbs** 或已有的 **FLOW2 键盘设置** 桌面快捷方式。静态网页版从 HTTPS 站点打开，首次完整加载后可在同一浏览器离线重开。
+这个例子把 Windows 基础层的 `Ins` 改成 `Home`。
 
-1. 键盘切到有线档，通过数据线连接电脑。用桌面 Chrome 或 Edge 打开页面，点击「通过 USB 配置」，选择 `Flow2@Lofree`。
-2. 在工作台顶部选择「键位分配」，选择 Windows 或 macOS 的基础层或 Fn 层。Fn 层带短虚线的键沿用该系统基础层的映射。点实体键可查看动作、搜索新映射、录入组合键或分配宏。
-3. 例如将 Windows 基础层的 `Ins` 改为 `Home`。在键盘图上点 `Ins`，从下方的「按键」列表选 `Home`。底栏会显示 `Ins → Home`。点「保存到键盘」，等读回确认后选「测试此键」，按一下实体 `Ins` 验证结果。
+1. 把键盘切到有线档，接上 USB 数据线，用 `Fn+N` 切到 Windows 模式。打开配置器，点「通过 USB 配置」，在浏览器弹窗中选择 `Flow2@Lofree`。
+2. 在「键位分配」中选 **Windows → 基础**。点键盘图右上角的 `Ins`，再从下方动作列表选 `Home`。此时底栏会显示待保存的 `Ins → Home`。
+3. 点「保存到键盘」。看到读回确认后，点「测试此键」，按一下实体 `Ins`，检查页面是否收到 `Home`。
 
-![改键示例。箭头依次指向键盘图右上角的 Ins、候选列表中的 Home 和右下角的「保存到键盘」。](docs/images/remap-zh.png)
+![从键盘图选择 Ins，在动作列表选择 Home，最后点击右下角的「保存到键盘」。](docs/images/remap-zh.png)
 
-键盘图支持方向键移动和 Enter 选键。输入搜索词后按 ↓ 进入结果，按 Enter 分配，按 Esc 返回实体键。键帽上的 M1 至 M16 对应宏槽，选键可查看完整宏名称。撤销编辑使用 Ctrl+Z 或 ⌘Z，重做使用 Ctrl+Shift+Z 或 ⇧⌘Z。语言选择在导航栏底部，窄屏位于右上角。
+第一次打开时，也可以直接去「方案」点「查看导航键示例」，不接键盘就能预览内置方案。
 
-## 设备功能
+## 功能与操作
 
-| 功能 | 控制方式 |
+- **键位与宏**　分别编辑 Windows、macOS 的基础层和 Fn 层。84 个实体键可分配普通按键、组合键、媒体动作或宏。16 个宏槽共享 2,976 字节，可录制按键，也可在时间轴上编辑文本、按下、松开和延迟。
+- **方案与备份**　键盘保存一套配置。命名方案、宏名称和未保存的草稿留在当前浏览器。导出 JSON 可把方案带到另一台电脑。「导出备份」保存已从设备确认的配置，「导出当前草稿」包含正在编辑的改动。
+- **背光与触控条**　白色背光有五档亮度，支持常亮和呼吸。点键盘图的右侧边缘，可以查看滑动调音量、按住 Fn 滑动调屏幕亮度等原厂手势。
+- **按键测试**　测试页显示浏览器收到的按下、松开事件，以及同时按下的键数。USB、蓝牙和 2.4G 都能测试。
+
+<details>
+<summary>录一个 Ctrl+C 宏，分配给实体键</summary>
+
+在「宏」页选一个空槽，例如 M1。点「录制并追加」，在录制区按下 `Ctrl+C`，再点「结束录制」。时间轴会列出 Ctrl 和 C 的按下与松开。点「分配按键 →」，在键盘图上选触发键，再点「保存到键盘」。只改宏名称时，点「保存到此浏览器」。
+
+![宏页上的 M1 宏槽、「录制并追加」按钮和「分配按键」入口。](docs/images/macro-zh.png)
+
+</details>
+
+<details>
+<summary>从快照恢复上一次写入前的配置</summary>
+
+每次写入前，配置器都会在浏览器中保留快照。打开「方案」，在「恢复上次写入前的配置」一行点「载入快照」。要撤销上面的改键，预览里应当看到 `Home → Insert`。点「载入草稿」后，再点「保存到键盘」完成恢复。写入中断后重新连接并续写，仍会保留最初的恢复点。
+
+![在方案页载入快照，核对 Home → Insert，再把快照载入草稿。](docs/images/restore-zh.png)
+
+</details>
+
+## 兼容性与实测
+
+配置器通过 WebHID 和 VIA 12 读写原厂固件。标准 OE927 实机已验证断电保存，以及蓝牙和 2.4G 下的板载宏触发。[实机记录](HARDWARE-TEST.md)
+
+| 环境 | 已验证的范围 |
 | --- | --- |
-| 键位 | 84 个实体键。0/1 为 Mac 基础/Fn，2/3 为 Windows 基础/Fn，4/5 为原厂服务层。备份包含全部 540 个矩阵位置和完整 16 位键码。 |
-| 宏 | 16 个槽共享 2,976 字节。可编辑文本、按键、组合键与 1–9,999 ms 延迟。选择步骤即可调整参数，从绑定位置可返回键盘。 |
-| 背光 | 白色背光有关闭、25%、50%、75%、100% 五档，支持常亮和呼吸。预览后保存，按实际硬件档位验证。 |
-| 触控条 | 点键盘右侧边缘查看手势。上下滑动调系统音量，按住 Fn 滑动调屏幕亮度，长按 Fn＋空格 3 秒切换启用。 |
-| 测试 | 页面记录收到的按下、松开与同时按下峰值。每轮连接标签在开始时锁定，每轮最多 500 个事件，浏览器保留最近 20 轮。 |
+| Windows · Chrome | 真机 USB 读取、`Ins → Home` 写入与读回、从快照恢复完整配置。 |
+| Windows · Edge | 用模拟键盘验证了改键和保存流程，以及离线重开。USB 实机写入待验证。 |
+| macOS · Chromium | CI 用模拟键盘运行浏览器回归。Mac 真机 USB 读写待验证。 |
 
-实体系统模式通过 Fn+N / Fn+M 切换。蓝牙在无线档短按 Fn+1/2/3 选槽，长按 3 秒配对。2.4G 使用接收器和无线档，按 Fn+4 约一秒。设备页提供连接帮助和触控扩展查询。[原厂手册](https://cdn.shopify.com/s/files/1/2779/9046/files/Flow2_84_UserManual.pdf?v=1792140117) · [设备参数](PARAMETERS.md)
+Safari 和 Firefox 可查看方案、查阅手册和测试按键。网页版首次完整加载后，可在同一浏览器离线重开。各层矩阵、宏容量和固件可调参数见设备说明。[设备参数](PARAMETERS.md) · [洛斐官方手册](https://cdn.shopify.com/s/files/1/2779/9046/files/Flow2_84_UserManual.pdf?v=1792140117)
 
-### 录制并分配宏
+## 本地开发
 
-在「宏」页选一个空槽，例如 M1。点「录制并追加」，在录制区按下 `Ctrl+C`，再点「结束录制」。时间轴会列出 Ctrl 和 C 的按下与松开。点「分配按键 →」，在键盘图上选一个键来触发这个宏，再点「保存到键盘」。只改宏名称时，点「保存到此浏览器」。
+本地运行需要 Node.js 20 或更新版本。
 
-![录制复制快捷键。箭头依次标出左侧的 M1 宏槽、右下方的「录制并追加」和绑定行右端的「分配按键」。](docs/images/macro-zh.png)
+```sh
+git clone https://github.com/hyouo/flow2-control.git
+cd flow2-control
+npm start
+```
 
-## 方案与恢复
+在浏览器打开 `http://127.0.0.1:8842/`。Windows 用户也可以双击仓库里的 `启动 FLOW2.vbs`。运行 `npm run build` 可在 `dist/` 生成可部署到 HTTPS 站点的静态文件。
 
-要撤销上一次写入，在「方案」页找到「恢复上次写入前的配置」，点「载入快照」。以刚才的改键为例，预览应显示 `Home → Insert`。核对方向后点「载入草稿」，再点「保存到键盘」完成恢复。
+`npm test` 运行协议、编辑器和本地服务测试。浏览器回归使用模拟键盘和本机安装的 Chrome，可用下面两条命令运行。
 
-![恢复 Ins 的原映射。上方箭头指向「载入快照」，下方箭头标出 Home → Insert 的差异和「载入草稿」按钮。](docs/images/restore-zh.png)
+```sh
+npm ci
+npm run test:browser
+```
 
-- 键位、宏、背光和宏名称均可撤销。未保存草稿保存在当前浏览器。重连时先读取键盘，再预览旧草稿相对当前值的差异。
-- 每次设备写入前保留完整恢复点。宏传输期间暂停调用，全部内容读回一致后启用。保存中断可在重开页面后续写，续写沿用最初的恢复点。
-- 「导出备份」取已确认的设备配置及配套宏名称，「导出草稿」包含正在编辑的内容。v1 键位备份与 v2 完整方案均可导入。支持断开 USB 时查看、导出本地方案和打开方案文件。「查看导航键示例」打开随站点提供的合成数据。
-- 从桌面版切换到另一站点或电脑，可通过 JSON 文件携带方案。浏览器按站点分别存储草稿、本地名称和恢复点。
+## 参与项目
 
-## 构建与发布
+报告问题时，请写明键盘型号、操作系统、浏览器、操作步骤，以及预期和实际看到的结果。手边有 Mac 和标准版 OE927 的用户，可以用上面的改键和恢复示例，记录写入是否成功、实体键发出了什么，以及快照能否还原。[提交 Issue](https://github.com/hyouo/flow2-control/issues)
 
-本地启动器与构建脚本使用 Node.js 20 或更新版本。运行 `npm start` 后打开 `http://127.0.0.1:8842/`。最后一个本地窗口关闭约 4 秒后服务退出。
+修改设备读写可以从 VIA 通信实现和协议测试入手。修改界面可以参考现有的交互设计，在 PR 中附上操作截图。[VIA 通信](public/via.js) · [协议测试](test/protocol.test.mjs) · [界面设计](DESIGN.md) · [CI](https://github.com/hyouo/flow2-control/actions/workflows/test.yml)
 
-`npm run build` 在 `dist/` 生成静态站点。把该目录部署到 HTTPS 根目录或项目子目录，入口为该目录的 `index.html`。GitHub Pages 可在仓库设置中选择 GitHub Actions 后手动运行 **Publish to GitHub Pages**。发布目录只包含网页、内置布局、字体、许可和合成示例。运行网页使用本地资源。
+## 许可
 
-`npm test` 运行协议、编辑和本地服务回归。安装开发依赖 `npm ci` 后，`npm run test:browser` 用已安装的 Chrome 验证子路径、离线启动、断连恢复、窄屏保存和四档屏宽。环境变量 `FLOW2_BROWSER=msedge` 可切换为 Edge。Windows 与 macOS 的 CI 使用 Playwright Chromium。真机验收使用 `npm run test:hardware -- chrome` 或 `npm run test:hardware -- msedge`。选择键盘后，按页面提示按一次实体 Ins，程序会恢复并重新读取配置。每次的基准和读回数据保存在 `.local/hardware/`。[浏览器验收](checks/browser.mjs) · [实机记录](HARDWARE-TEST.md)
-
-## 兼容范围
-
-适配标准 OE927 原厂固件。配置写入走 USB，三种连接方式都可使用已保存的板载映射。Safari、Firefox 可查看方案、手册并使用页面按键测试。显示器对系统亮度指令的响应由系统和硬件决定。文本宏按英文键盘布局发送，系统保留快捷键可能只在系统内生效。Mac 真机验证状态见实机记录。
-
-项目自有代码使用 [MIT 许可](LICENSE)。Inter 使用 [SIL Open Font License](public/fonts/OFL.txt)。机身尺寸与键位几何参考洛斐 OE927 公开资料。[产品规格](https://www.lofree.co/products/flow-2-84-low-profile-mechanical-keyboard)
+项目自有代码采用 MIT 许可，随附的 Inter 字体采用 SIL Open Font License。键盘图的机身尺寸和键位布局参考洛斐的 OE927 公开资料。[MIT](LICENSE) · [字体许可](public/fonts/OFL.txt) · [产品规格](https://www.lofree.co/products/flow-2-84-low-profile-mechanical-keyboard)

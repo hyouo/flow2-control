@@ -2,38 +2,84 @@
 
 I rewrote the driver for my Lofree FLOW 2 simply because the official one sucks.
 
-FLOW2 Control supports the standard ANSI FLOW 2 84 (OE927) and has English and Chinese interfaces. Plug the keyboard in over USB to remap keys, record macros and adjust the white backlight in your browser. When you select **Save to keyboard**, the configurator reads the settings back over VIA 12 to verify each change. The keyboard stores one configuration. Your browser keeps your other profiles and drafts. [Open the configurator](https://hyouo.github.io/flow2-control/) · [中文](README.md)
+FLOW2 Control is an open-source web configurator for the **Lofree FLOW 2 84, standard ANSI edition (OE927)**. Plug it in over USB to remap keys, record macros and adjust the white backlight in desktop Chrome or Edge. The configurator reads back each change when you save. Your keymaps and macros stay on the keyboard and work over Bluetooth and 2.4 GHz.
+
+**[Open the configurator](https://hyouo.github.io/flow2-control/)** · [中文](README.md) · [Releases](https://github.com/hyouo/flow2-control/releases)
 
 ## Configure a key
 
-1. Set the keyboard to wired mode and connect a USB data cable. Open the HTTPS site in desktop Chrome or Edge. On Windows you can also use the included desktop launcher.
-2. Select **Configure via USB** and choose **Flow2@Lofree**. Open **Key assignments** at the top of the workspace, choose Windows or macOS, then Base or Fn. A dashed mark on an Fn keycap means it inherits the action displayed from that system’s base layer. The keyboard’s physical OS shortcuts are Fn+N for Windows and Fn+M for Mac.
-3. To map **Ins** to **Home** on the Windows base layer, click **Ins** on the keyboard diagram and choose **Home** under **Keys**. The bottom bar shows **Ins → Home**. Click **Save to keyboard**, wait for readback, then select **Test this key** and press the physical **Ins** key to verify its output.
+This example maps **Ins** to **Home** on the Windows base layer.
 
-![Remap a key. The arrows point to Ins at the top right of the keyboard, Home in the action list and Save to keyboard in the bottom bar.](docs/images/remap-en.png)
+1. Switch the keyboard to wired mode, connect a USB data cable and use **Fn+N** to select Windows mode on the keyboard. Open the configurator, click **Configure via USB** and choose **Flow2@Lofree** in the browser prompt.
+2. Open **Key assignments** and select **Windows → Base**. Click **Ins** at the top right of the keyboard diagram, then **Home** in the action list. The bottom bar shows the pending **Ins → Home** change.
+3. Click **Save to keyboard**. Once readback is confirmed, click **Test this key** and press the physical **Ins** key. The tester should receive **Home**.
 
-The keyboard stores six layers and one onboard configuration. Sixteen macro slots share 2,976 bytes. The backlight supports five levels, steady and breathing. Select the right edge of the case to see the stock volume, display brightness and enable gestures. The Device page contains USB, Bluetooth and 2.4G instructions. [Official manual](https://cdn.shopify.com/s/files/1/2779/9046/files/Flow2_84_UserManual.pdf?v=1792140117)
+![Three arrows point to the physical Ins key on the diagram, Home in the action list and Save to keyboard in the bottom bar.](docs/images/remap-en.png)
 
-Use the arrow keys to move across the keyboard and Enter to select a key. After searching for an action, press Down to focus the results, Enter to assign, and Escape to return to the physical key. A keycap marked M1–M16 opens the corresponding macro assignment. The editor shows the full macro name.
+On your first visit, you can also open **Profiles → View navigation sample** to explore a profile without connecting a keyboard.
 
-## Record and assign a macro
+## Features and guides
 
-Open **Macros** and select an empty slot, such as M1. Click **Record and append**, press **Ctrl+C** in the recording area, then click **Stop recording**. The timeline shows when each key was pressed and released. Click **Assign to key →**, pick a key on the keyboard diagram to trigger the macro, then click **Save to keyboard**. If you only changed the macro name, click **Save in this browser**.
+- **Keymaps and macros.** Edit the base and Fn layers for Windows and macOS. Assign keys, shortcuts, media controls or macros to the 84 physical keys. Sixteen macro slots share 2,976 bytes. Record keystrokes or edit text, presses, releases and delays on the timeline.
+- **Profiles and backups.** The keyboard stores one onboard configuration. Your browser keeps named profiles, macro names and unsaved drafts. Export a JSON file to move a profile to another computer. A device backup contains confirmed settings. A draft export includes pending edits.
+- **Backlight and touch strip.** Choose from five white backlight levels with steady or breathing effects. Select the right edge of the keyboard diagram for the stock gestures, including swiping to change volume and holding Fn while swiping to adjust display brightness.
+- **Key tester.** See the press and release events your browser receives and how many keys are held at once over USB, Bluetooth or 2.4 GHz.
 
-![Record a copy shortcut. The arrows mark slot M1 on the left, Record and append at the bottom right and Assign to key above the timeline.](docs/images/macro-en.png)
+<details>
+<summary>Record Ctrl+C and assign it to a key</summary>
 
-## Profiles and compatibility
+Open **Macros** and select an empty slot, such as M1. Click **Record and append**, press **Ctrl+C** in the recording area, then click **Stop recording**. The timeline shows the press and release of each key. Click **Assign to key →**, pick a key on the diagram, then click **Save to keyboard**. If you only changed the macro name, click **Save in this browser**.
 
-To undo the last write, open **Profiles** and click **Load snapshot** in the **Restore pre-write snapshot** row. For the remap above, the preview should show **Home → Insert**. Check the direction, click **Load draft**, then **Save to keyboard** to finish restoring the key. A resumed write keeps the original snapshot, even after reopening the page.
+![Slot M1, Record and append, and Assign to key in the macro editor.](docs/images/macro-en.png)
 
-![Restore the Insert mapping. The upper arrow points to Load snapshot. The lower arrows identify the Home → Insert change and the Load draft button.](docs/images/restore-en.png)
+</details>
 
-The browser keeps local profiles, macro names and drafts. Export a JSON file to transfer a configuration between computers or origins. A device backup uses confirmed assignments and their saved macro names. A draft export includes pending edits. Version 1 and 2 backups retain all 540 matrix positions, including unknown 16-bit codes. Profiles can be inspected and exported with USB disconnected. The included navigation profile uses synthetic assignments.
+<details>
+<summary>Restore the configuration from before your last write</summary>
 
-Configuration requires desktop WebHID over USB. Input testing also works over Bluetooth and 2.4G. Browsers without WebHID offer the profile viewer, manual and event tester. The static site can reopen offline in the same browser after its first complete load. See the [hardware record](HARDWARE-TEST.md) for measured results.
+The configurator keeps a snapshot in your browser before each write. Open **Profiles** and click **Load snapshot** in the **Restore pre-write snapshot** row. To undo the remap above, look for **Home → Insert** in the preview. Click **Load draft**, then **Save to keyboard** to apply it. Resuming an interrupted write keeps the original restore point.
 
-## Development
+![Load snapshot opens a preview showing Home → Insert. Load draft brings the change into the editor.](docs/images/restore-en.png)
 
-With Node.js 20 or later, run `npm start` and open `http://127.0.0.1:8842/`. The local server exits after its last window closes. Run `npm run build` to create `dist/` for static HTTPS hosting. GitHub Pages project paths are supported. The **Publish to GitHub Pages** workflow runs on manual dispatch.
+</details>
 
-Run `npm test` for protocol and editor tests. Run `npm ci` and `npm run test:browser` for the offline and browser suite using installed Chrome. Set `FLOW2_BROWSER=msedge` to test installed Edge. For a physical test, run `npm run test:hardware -- chrome` or `npm run test:hardware -- msedge`. Select your wired keyboard and press the physical Ins key when prompted. The test restores the captured baseline and verifies the complete configuration. CI is configured for Windows and macOS. [MIT license](LICENSE) · [Inter font license](public/fonts/OFL.txt)
+## Compatibility
+
+The configurator talks to the stock firmware over WebHID using VIA 12. Tests on a standard OE927 confirmed that settings survive a power cycle and onboard macros play back over Bluetooth and 2.4 GHz. [Hardware results](HARDWARE-TEST.md)
+
+| Environment | Test coverage |
+| --- | --- |
+| Windows · Chrome | On a physical OE927, the configurator read the keymap over USB, wrote the **Ins → Home** change, verified it by readback and restored the original configuration from a snapshot. |
+| Windows · Edge | Tests with a simulated keyboard cover remapping, saving and reopening offline. USB writes to a physical keyboard still need testing. |
+| macOS · Chromium | The browser suite runs in CI with a simulated keyboard. USB reads and writes on a physical Mac still need testing. |
+
+Safari and Firefox can browse profiles, display the manual and run the key tester. After the first complete load, the site can reopen offline in the same browser. See the device notes for the layer matrix, macro capacity and stock firmware controls. [Device parameters](PARAMETERS.md) · [Lofree manual](https://cdn.shopify.com/s/files/1/2779/9046/files/Flow2_84_UserManual.pdf?v=1792140117)
+
+## Local development
+
+Local development requires Node.js 20 or later.
+
+```sh
+git clone https://github.com/hyouo/flow2-control.git
+cd flow2-control
+npm start
+```
+
+Open `http://127.0.0.1:8842/` in your browser. On Windows, you can also double-click `启动 FLOW2.vbs` in the repository. To build a static site for HTTPS hosting, run `npm run build` and deploy the contents of `dist/`.
+
+Run `npm test` for the protocol, editor and local server tests. The browser suite uses a simulated keyboard and a local installation of Chrome.
+
+```sh
+npm ci
+npm run test:browser
+```
+
+## Contributing
+
+When reporting a bug, include your keyboard model, OS, browser, steps to reproduce, and expected and actual results. If you have a Mac and a standard OE927, try the remap and restore examples above. Report whether the write succeeded, what the physical key sent and whether the snapshot restored the original mapping. [Open an issue](https://github.com/hyouo/flow2-control/issues)
+
+For device changes, start with the VIA transport and its protocol tests. For UI changes, the design notes describe the existing interactions. A screenshot in your pull request helps reviewers see the change. [VIA transport](public/via.js) · [Protocol tests](test/protocol.test.mjs) · [Design notes](DESIGN.md) · [CI](https://github.com/hyouo/flow2-control/actions/workflows/test.yml)
+
+## License
+
+The project code is distributed under the MIT License. The bundled Inter font uses the SIL Open Font License. The keyboard diagram uses the case dimensions and key layout from Lofree’s published OE927 materials. [MIT](LICENSE) · [Font license](public/fonts/OFL.txt) · [Product specifications](https://www.lofree.co/products/flow-2-84-low-profile-mechanical-keyboard)
