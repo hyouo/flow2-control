@@ -4,7 +4,7 @@ I rewrote the driver for my Lofree FLOW 2 simply because the official one sucks.
 
 FLOW2 Control is an open-source web configurator for the **Lofree FLOW 2 84, standard ANSI edition (OE927)**. Plug it in over USB to remap keys, record macros and adjust the white backlight in desktop Chrome or Edge. The configurator reads back each change when you save. Your keymaps and macros stay on the keyboard and work over Bluetooth and 2.4 GHz.
 
-**[Open the configurator](https://hyouo.github.io/flow2-control/)** · [中文](README.md) · [Releases](https://github.com/hyouo/flow2-control/releases)
+**[Open the configurator](https://hyouo.github.io/flow2-control/)** · [Download the static site ZIP](https://github.com/hyouo/flow2-control/releases/latest/download/flow2-control-web.zip) · [Release notes](https://github.com/hyouo/flow2-control/releases) · [中文](README.md)
 
 ## Configure a key
 
@@ -55,6 +55,20 @@ The configurator talks to the stock firmware over WebHID using VIA 12. Tests on 
 
 Safari and Firefox can browse profiles, display the manual and run the key tester. After the first complete load, the site can reopen offline in the same browser. See the device notes for the layer matrix, macro capacity and stock firmware controls. [Device parameters](PARAMETERS.md) · [Lofree manual](https://cdn.shopify.com/s/files/1/2779/9046/files/Flow2_84_UserManual.pdf?v=1792140117)
 
+## Troubleshooting
+
+- **The keyboard types, but the USB picker is empty.** Switch the standard OE927 to wired mode, connect a USB data cable directly to the computer and open the configurator in desktop Chrome or Edge. Bluetooth and 2.4 GHz carry keystrokes. Configuration uses USB. If you can select the keyboard but the read times out, close any other configurator using it and reconnect.
+- **A key still sends its old action after saving.** Check which system and layer you edited. Use **Fn+N** on the physical keyboard for Windows or **Fn+M** for Mac. To test an Fn-layer assignment, hold Fn while pressing the key.
+- **Import asks for a FLOW2 Control backup.** The vendor’s VIA layout describes the shape of the keyboard. To move your settings, open **Profiles** in the original browser, export a device backup or the current draft, then use **Choose file** in the new browser.
+
+## Self-hosting
+
+Unzip `flow2-control-web.zip` and serve the directory containing `index.html` from an HTTPS site. Both root and subdirectory deployments work. To use it locally with Python 3, run this command in the extracted directory and open `http://127.0.0.1:8000/` in Chrome or Edge. On macOS the Python command is usually `python3`.
+
+```sh
+python -m http.server 8000 --bind 127.0.0.1
+```
+
 ## Local development
 
 Local development requires Node.js 20 or later.
@@ -76,10 +90,14 @@ npm run test:browser
 
 ## Contributing
 
-When reporting a bug, include your keyboard model, OS, browser, steps to reproduce, and expected and actual results. If you have a Mac and a standard OE927, try the remap and restore examples above. Report whether the write succeeded, what the physical key sent and whether the snapshot restored the original mapping. [Open an issue](https://github.com/hyouo/flow2-control/issues)
+Select **Report an issue or test result** on the configurator’s **Device** page to open the form with your app version filled in. Include your model, OS, browser, connection and what happened. The connection log on that page contains the error messages. [File a device report](https://github.com/hyouo/flow2-control/issues/new?template=device-report.yml) · [Existing issues](https://github.com/hyouo/flow2-control/issues)
+
+Hardware reports from Mac users and Windows Edge users are welcome. On a Mac, select Mac mode with **Fn+M** and choose **macOS → Base** in the editor. In Edge on Windows, follow the Windows example above. Note the original mapping, then report the readback after saving, the event from the physical key and whether restoring brought back the original value.
 
 For device changes, start with the VIA transport and its protocol tests. For UI changes, the design notes describe the existing interactions. A screenshot in your pull request helps reviewers see the change. [VIA transport](public/via.js) · [Protocol tests](test/protocol.test.mjs) · [Design notes](DESIGN.md) · [CI](https://github.com/hyouo/flow2-control/actions/workflows/test.yml)
 
 ## License
 
-The project code is distributed under the MIT License. The bundled Inter font uses the SIL Open Font License. The keyboard diagram uses the case dimensions and key layout from Lofree’s published OE927 materials. [MIT](LICENSE) · [Font license](public/fonts/OFL.txt) · [Product specifications](https://www.lofree.co/products/flow-2-84-low-profile-mechanical-keyboard)
+The project code is distributed under the MIT License. The bundled Inter font uses the SIL Open Font License. [MIT](LICENSE) · [Font license](public/fonts/OFL.txt)
+
+The case dimensions follow Lofree’s specifications. The matrix positions and key widths come from Lofree’s `Flow2_84_OE927_ANSI-US_VIA.json`. The static build extracts the `layouts` field from this definition. [Layout file](flow2-84.official.json) · [Lofree Download Center](https://www.lofree.co/pages/download-center) · [Product specifications](https://www.lofree.co/products/flow-2-84-low-profile-mechanical-keyboard)

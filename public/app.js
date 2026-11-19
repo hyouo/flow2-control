@@ -1503,7 +1503,12 @@ async function initialize() {
     prepareText(document);
     const language = readLocal('flow2-control.language', navigator.language?.startsWith('zh') ? 'zh-CN' : 'en');
     setLanguage(language); $('language').value = currentLanguage();
-    $('app-version').textContent = 'v' + VERSION;
+    const versionLabel = 'v' + VERSION;
+    $('app-version').textContent = versionLabel;
+    $('device-version').textContent = versionLabel;
+    const reportUrl = new URL($('device-report').href);
+    reportUrl.searchParams.set('version', versionLabel);
+    $('device-report').href = reportUrl.href;
     if (/Mac/.test(navigator.platform || '')) state.layer = 0;
     openSession();
     if (document.documentElement.dataset.runtime !== 'desktop' && 'serviceWorker' in navigator) {

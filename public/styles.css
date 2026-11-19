@@ -369,6 +369,8 @@ progress::-webkit-progress-value { background: var(--accent); border-radius: inh
 .backup-row, .device-info-row, .change-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line); }
 .backup-row .button { flex-shrink: 0; }
 .device-info-row small { font-weight: 400; }
+.project-info, .project-links { flex-wrap: wrap; }
+.project-links { display: flex; align-items: center; gap: 6px 16px; font-size: 13px; }
 .device-help, .test-area, .test-prompt { margin: 16px 0; }
 .device-help p { margin: 8px 0; }
 .connection-guides { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; margin: 12px 0; }

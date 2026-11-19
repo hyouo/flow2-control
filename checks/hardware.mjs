@@ -24,7 +24,7 @@ async function snapshot(name) {
 }
 
 async function connect() {
-  await page.locator('#keyboard .key').first().waitFor();
+  await page.locator('#keyboard .key').first().waitFor({ state: 'attached' });
   if (!await page.locator('#connection-dot.online').count()) {
     await page.locator('#connect').click();
     console.log('Choose Flow2@Lofree in ' + channel + ' at ' + address);

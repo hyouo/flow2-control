@@ -1,0 +1,41 @@
+name: 设备反馈 / Device report
+description: 报告问题或分享真机测试结果。 Report a problem or share a hardware test result.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: 配置器版本 / Configurator version
+      description: 见「设备」页顶部。 Shown at the top of the Device page.
+  - type: input
+    id: environment
+    attributes:
+      label: 键盘、系统和浏览器 / Keyboard, OS and browser
+      placeholder: e.g. FLOW 2 84 ANSI (OE927), Windows 11, Chrome 149
+    validations:
+      required: true
+  - type: dropdown
+    id: connection
+    attributes:
+      label: 测试时的连接方式 / Connections used
+      multiple: true
+      options:
+        - USB
+        - Bluetooth
+        - 2.4 GHz
+        - 未连接 / Disconnected
+  - type: textarea
+    id: result
+    attributes:
+      label: 操作与结果 / Steps and results
+      description: |
+        遇到问题时，写下操作步骤、预期和实际结果。测试改键时，请分别写出保存后页面读回的映射、按下实体键的结果，以及恢复后的映射。
+        For a bug, include the steps, expected result and actual result. For a remap test, report the saved readback, physical key output and mapping after restoration.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: 相关诊断信息（可选） / Relevant diagnostics (optional)
+      description: |
+        可以从「设备 → 连接记录」复制相关消息，或从「导出诊断记录」取得版本和错误信息。
+        Copy the relevant messages from Device → Connection log, or use Export diagnostics for version and error details.

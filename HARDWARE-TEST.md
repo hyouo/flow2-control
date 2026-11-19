@@ -39,7 +39,9 @@ Windows Chrome 通过 USB 读取当天的完整配置。Windows 基础层的实�
 
 ## 复核方法
 
-在 Windows 上运行 `npm ci` 和 `npm run test:hardware -- chrome`，选择有线键盘并按提示操作。脚本将测试前配置、改键和恢复后的读回数据保存在本机的 `.local/hardware/`，可逐项比较键位、宏与背光。[实机验收脚本](checks/hardware.mjs)
+在 Windows 上将键盘切到有线档，用 `Fn+N` 选中 Windows 模式。运行 `npm ci`，再运行 `npm run test:hardware -- chrome` 或 `npm run test:hardware -- msedge`。在浏览器里选择键盘，等终端提示后按一次实体 Ins。[实机验收脚本](checks/hardware.mjs)
+
+脚本读取初始配置，把 Ins 改为 Home，收集一次按下和松开，然后恢复并逐项比较键位、宏与背光。记录保存在本机的 `.local/hardware/`。如果 Ins 原本就映射为 Home，这一轮只验证实体事件。提交实测结果时，可填写读回和恢复的结论，并附上只包含目标键事件的 `home-events.json`。[提交设备反馈](https://github.com/hyouo/flow2-control/issues/new?template=device-report.yml)
 
 无线测试以页面收到的按下和松开事件核对宏输出。屏幕亮度取自 Windows 系统读数，触控开关由实体操作确认。
 

@@ -212,6 +212,8 @@ export const english = {
   "当前接口没有配置命令": "No configuration command",
   "由固件决定": "Firmware controlled",
   "连接记录": "Connection log",
+  "项目源码 ↗": "Source code ↗",
+  "反馈问题或实测 ↗": "Report an issue or test result ↗",
   "导出诊断记录": "Export diagnostics",
   "等待连接": "Waiting for connection",
   "读取键位后即可编辑": "Read the keyboard to edit its assignments",
