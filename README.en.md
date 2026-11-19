@@ -30,4 +30,6 @@ I rewrote the driver for my Lofree FLOW 2 simply because the official one sucks.
 
 To report a problem, open **Device → Report an issue or test result** in the app. The form will include your app version. [File a report](https://github.com/hyouo/flow2-control/issues/new?template=device-report.yml)
 
+For project inquiries, email <hy200304@gmail.com>.
+
 [Download the site ZIP](https://github.com/hyouo/flow2-control/releases/latest/download/flow2-control-web.zip) · [Open the ZIP locally](docs/guide.en.md#run-the-downloaded-site) · [Run from source](docs/guide.en.md#run-from-source) · [MIT license](LICENSE)

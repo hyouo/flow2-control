@@ -30,4 +30,6 @@
 
 遇到问题可以在配置器的「设备」页点「反馈问题或实测」，表单会自动带上版本号。[提交反馈](https://github.com/hyouo/flow2-control/issues/new?template=device-report.yml)
 
+项目联系邮箱为 <hy200304@gmail.com>。
+
 [下载网页版 ZIP](https://github.com/hyouo/flow2-control/releases/latest/download/flow2-control-web.zip) · [在本机打开 ZIP](docs/guide.md#使用下载的网页版) · [从源码运行](docs/guide.md#从源码运行) · [MIT 许可](LICENSE)
